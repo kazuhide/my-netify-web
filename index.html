@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bitmovin Demo</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/bit-fav.png">
+    <!-- Bitmovin Player -->
+    <script src="//cdn.bitmovin.com/player/web/8/bitmovinplayer.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            color: #fff;
+            font-weight: 300;
+        }
+
+        body {
+            background: rgba(44, 131, 185, 1);
+            background: -moz-linear-gradient(left, rgba(44, 131, 185, 1) 0%, rgba(30, 171, 227, 1) 100%);
+            background: -webkit-gradient(left top, right top, color-stop(0%, rgba(44, 131, 185, 1)), color-stop(100%, rgba(30, 171, 227, 1)));
+            background: -webkit-linear-gradient(left, rgba(44, 131, 185, 1) 0%, rgba(30, 171, 227, 1) 100%);
+            background: -o-linear-gradient(left, rgba(44, 131, 185, 1) 0%, rgba(30, 171, 227, 1) 100%);
+            background: -ms-linear-gradient(left, rgba(44, 131, 185, 1) 0%, rgba(30, 171, 227, 1) 100%);
+            background: linear-gradient(to right, rgba(44, 131, 185, 1) 0%, rgba(30, 171, 227, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2c83b9', endColorstr='#1eabe3', GradientType=1);
+        }
+
+        #wrapper {
+            background: url(images/logo-bg-demopage.png);
+            height: 100vh;
+        }
+
+        #banner {
+            border-bottom: 1px solid #fff;
+            background-color: #1eabe3;
+            width: 100%
+        }
+
+        #banner h1 {
+            margin: 0;
+            padding: 30px;
+        }
+
+        .logo {
+            padding: 10px;
+            width: 25%;
+            min-width: 350px;
+            float: left;
+            margin: auto;
+        }
+
+        .title {
+            width: 75%;
+            white-space: nowrap;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .content {
+            margin-bottom: 10em;
+        }
+
+        h1, h2, h3, p {
+            font-weight: 300;
+            text-align: center;
+            margin: 40px;
+        }
+
+        #player {
+            max-width: 900px;
+            width: 90%;
+            margin: auto;
+            -webkit-box-shadow: 0px 0px 56px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 0px 56px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 56px 0px rgba(0, 0, 0, 0.75);
+        }
+
+        a {
+            color: #97d9ef;
+            font-weight: 400;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 800px) {
+            .logo {
+                width: 100%;
+            }
+
+            .title {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="banner">
+        <div class="logo"><img src="images/bitmovin-logo.png"></div>
+        <div class="title"><h1>Bitmovin HTML5 Player</h1></div>
+        <div class="clear"></div>
+    </div>
+    <div class="container">
+        <h1>HTML5 Adaptive Streaming Player for MPEG-DASH & HLS</h1>
+        <h2>Your videos play everywhere with low startup delay, no buffering and in highest quality.</h2>
+        <div class="content">
+            <div class="player-wrapper">
+                <div id="player"></div>
+            </div>
+            <div class="description">
+                <p>For more information about the bitmovin player, please have a look at our online <a
+                        href="//bitmovin.com/support" target="_blank">Developer Section</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var player;
+
+    var conf = {
+        key: 'ca631200-c1ce-4466-a731-b1bdbedc388b',
+        advertising: {
+            adBreaks: [{
+                tag: {
+                    url: 'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/32573358/skippable_ad_unit&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=http%3A%2F%2Freleasetest.dash-player.com%2Fads%2F&description_url=[description_url]&correlator=[random]',
+                    type: 'vast',
+                },
+                id: 'ad-pre-skippable',
+                position: '10%',
+            }]
+        }
+    };
+    var source = {
+        dash: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd',
+        hls: 'https://bitmovin-api-ap-northeast1-ci.s3-ap-northeast-1.amazonaws.com/output/lipsync/tarareba_01/H265/FAIRPLAY_DRM/2.27.0/stream.m3u8',
+        progressive: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/MI201109210084_mpeg-4_hd_high_1080p25_10mbits.mp4',
+        poster: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/poster.jpg',
+        drm: {
+            fairplay: {
+                LA_URL: 'https://bees.streaks.jp/hulu/c8053ac2f37c4f2e98cf3ba928d9bf2c/fairplay-license?token=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIxNGYxMWM5YTdjYTE0MzllYmVmMWU0YjYyZTViNDA5NiIsIm0iOiJodWx1IiwidHMiOjE1NzcwNTI0OTMsImsiOiIzNTQxYjRkOGM0ZGQ0YjAyOGRiZWYyMGJhYjBlODQ1OCIsImFpZCI6ImNvbnRlbnRfaWQiLCJwcCI6ImJlYzZhNDEzYzJlNzQyZGJhYzM0MTc4MzY1NTliYmFhIiwiaWF0IjoxNTc3MDUyNDkzfQ.L75jrSAk5JnfS9FCjHRMhNQXx5LyydJoF-4YpoeoqL0M7fi46zKiW81DRisXNwaJ_qUmcTNy4kUxR-POdqGoAQ',
+                certificateURL: 'https://bees.streaks.jp/hulu/c8053ac2f37c4f2e98cf3ba928d9bf2c/fairplay-license/cert/3541b4d8c4dd4b028dbef20bab0e8458'
+            }
+        }
+    };
+
+    var onPlay = function () {
+        console.log('onPlay');
+    };
+    var onPlaying = function () {
+        console.log('onPlaying');
+    };
+    var onReady = function () {
+        console.log('onReady');
+    };
+    var onSourceLoaded = function () {
+        console.log('onSourceLoaded');
+    };
+    var onSourceUnloaded = function () {
+        console.log('onSourceUnloaded');
+    };
+    var onError = function () {
+        console.log('onError');
+    };
+    var onStallStarted = function () {
+        console.log('onStallStarted');
+        player.unload();
+    };
+    var onStallEnded = function () {
+        console.log('onStallEnded');
+    };
+
+    player = new bitmovin.player.Player(document.getElementById('player'), conf);
+    player.on(bitmovin.player.PlayerEvent.Play, onPlay);
+    player.on(bitmovin.player.PlayerEvent.Playing, onPlaying);
+    player.on(bitmovin.player.PlayerEvent.Ready, onReady);
+    player.on(bitmovin.player.PlayerEvent.SourceLoaded, onSourceLoaded);
+    player.on(bitmovin.player.PlayerEvent.SourceUnloaded, onSourceUnloaded);
+    player.on(bitmovin.player.PlayerEvent.Error, onError);
+    player.on(bitmovin.player.PlayerEvent.StallStarted, onStallStarted);
+    player.on(bitmovin.player.PlayerEvent.StallEnded, onStallEnded);
+
+    player.load(source).then(function () {
+        console.log('Successfully loaded source'); // Success!
+    }, function () {
+        console.log('Error while loading source'); // Error!
+    });
+</script>
+</body>
+</html>
