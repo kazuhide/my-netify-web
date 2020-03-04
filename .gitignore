@@ -12,6 +12,12 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/misc.xml
+.idea/modules.xml
+.idea/my-netify-web.iml
+.idea/vcs.xml
+**/.DS_Store
+.DS_Store
 
 # Generated files
 .idea/**/contentModel.xml
@@ -91,4 +97,3 @@ fabric.properties
 .idea/**/markdown-navigator/
 
 # End of https://www.gitignore.io/api/webstorm
-
