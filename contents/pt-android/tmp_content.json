@@ -10,7 +10,7 @@
       "content": [
         {
           "format": "M3U8",
-          "url": "https://hls-abr-api-wse-nhkw.stream.co.jp/make.m3u8?app=mz-nhk10&plfm=kitdvod&bcp=mm/flvmedia/&media=1285120:5905/e/2/1/e21bv20l_s2plj5u6_h264_1244K.mp4,683008:5905/e/2/1/e21bv20l_fkri4xh8_h264_664K.mp4,392192:5905/e/2/1/e21bv20l_a0263h5y_h264_384K.mp4&caption=en:o/5/8/o5837c6sENG_2064-045_HT_Keyword Shibuya Part 2 (New Landmarks)_NB_NB.vtt,es:v/l/e/vler1i25FNL_ES_2064-045_HT_Keyword Shibuya Part 2 (New Landmarks)_NB_NB.vtt,id:q/3/7/q37782ftFNL_ID_2064-045_HT_Keyword Shibuya Part 2 (New Landmarks)_NB_NB.vtt,ko:w/3/9/w39736ekFNL_KO_2064-045_HT_Keyword Shibuya Part 2 (New Landmarks)_NB_NB.vtt",
+          "url": "https://hls-abr-api-wse-nhkw.stream.co.jp/make.m3u8?app=mz-nhk10&plfm=kitdvod&bcp=mm/flvmedia/&media=1285120:5905/e/2/1/e21bv20l_s2plj5u6_h264_1244K.mp4,683008:5905/e/2/1/e21bv20l_fkri4xh8_h264_664K.mp4,392192:5905/e/2/1/e21bv20l_a0263h5y_h264_384K.mp4&caption=en:o/5/8/o5837c6sENG_2064-045_HT_Keyword%20Shibuya%20Part%202%20(New%20Landmarks)_NB_NB.vtt%2Ces%3Av%2Fl%2Fe%2Fvler1i25FNL_ES_2064-045_HT_Keyword%20Shibuya%20Part%202%20(New%20Landmarks)_NB_NB.vtt%2Cid%3Aq%2F3%2F7%2Fq37782ftFNL_ID_2064-045_HT_Keyword%20Shibuya%20Part%202%20(New%20Landmarks)_NB_NB.vtt%2Cko%3Aw%2F3%2F9%2Fw39736ekFNL_KO_2064-045_HT_Keyword%20Shibuya%20Part%202%20(New%20Landmarks)_NB_NB.vtt",
           "language": "en"
         }
       ],
