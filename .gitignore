@@ -97,3 +97,8 @@ fabric.properties
 .idea/**/markdown-navigator/
 
 # End of https://www.gitignore.io/api/webstorm
+
+node_modules/
+package.json
+package-lock.json
+
