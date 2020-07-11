@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="https://cdn.bitmovin.com/player/web/8.38.0/bitmovinplayer.js"></script>
+    <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3_dai.js"></script>
+    <style>
+        #player {
+            max-width: 900px;
+            width: 90%;
+            margin: auto;
+            -webkit-box-shadow: 0px 0px 56px 0px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 0px 56px 0px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 0px 56px 0px rgba(0, 0, 0, 0.75);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="player-wrapper" style="position: relative">
+    <div id="player">
+        <video id="video"/>
+    </div>
+    <div id="ad_message"
+         style="width: 100px; text-align: center; border: 1px solid white; position: relative; top: 10px; left: 10px; cursor: pointer; display: none;">
+        This is an ad
+    </div>
+</div>
+
+<script type="text/javascript">
+    const container = document.getElementById('player');
+    const playerConfig = {
+        key: '0df107ef-4cfb-49ed-a27a-a1f40ccd97b4',
+        playback: {
+            autoplay: true,
+            muted: false,
+            preferredTech: [{
+                player: 'html5',
+                streaming: 'hls'
+            }]
+        },
+        logs: {
+            level: 'debug'
+        },
+        tweaks: {
+            prevent_video_element_preloading: true
+        }
+    }
+    const cmsId = '2528370';
+    const videoId = 'tears-of-steel' // '1730810435969';
+    const player = new bitmovin.player.Player(container, playerConfig);
+    const markers = [];
+    let streamManager;
+    let allowSnapback = true;
+    let isSeeking = false;
+    let isSnapback = false;
+    let snapForwardTime = 0;
+    let snapbackOffset = 0;
+    let adClickElement = document.getElementById('ad_message');
+
+    streamManager = new google.ima.dai.api.StreamManager(document.getElementById("video"));
+    streamManager.setClickElement(adClickElement);
+    streamManager.addEventListener(
+        [
+            google.ima.dai.api.StreamEvent.Type.LOADED,
+            google.ima.dai.api.StreamEvent.Type.ERROR,
+            google.ima.dai.api.StreamEvent.Type.AD_BREAK_STARTED,
+            google.ima.dai.api.StreamEvent.Type.AD_BREAK_ENDED,
+            google.ima.dai.api.StreamEvent.Type.STARTED,
+            google.ima.dai.api.StreamEvent.Type.CUEPOINTS_CHANGED,
+        ],
+        onStreamEvent,
+        false);
+    const streamRequest = new google.ima.dai.api.VODStreamRequest();
+    streamRequest.contentSourceId = cmsId;
+    streamRequest.videoId = videoId;
+    streamManager.requestStream(streamRequest);
+
+    function snapForward() {
+        const streamTime = player.getCurrentTime();
+        if (
+            snapForwardTime > 0
+            && snapForwardTime > streamTime
+        ) {
+            console.log(`snapping forward to stream time ${snapForwardTime}`);
+            const seekResponse = player.seek(snapForwardTime);
+
+            if (isSeeking === true) {
+                console.warn('Snap forward seek did not complete after 2 seconds, re-attempt seeking');
+                player.seek(snapForwardTime);
+            }
+
+            snapForwardTime = 0;
+        }
+    }
+
+    function snapBack() {
+        const streamTime = player.getCurrentTime();
+        const previousAd = streamManager.previousCuePointForStreamTime(streamTime);
+
+        if (isSnapback === true) {
+            isSnapback = false;
+            return;
+        }
+
+        if (previousAd && previousAd.played === false) {
+            console.log('Performing ad snapback');
+            isSnapback = true;
+
+            if (streamTime > previousAd.end) {
+                console.log(`Setting snap forward time to ${streamTime}`);
+                snapForwardTime = streamTime;
+            }
+
+            const snapBackSeekTime = previousAd.start - snapbackOffset;
+            console.log(`Seeking back to ${snapBackSeekTime} (ad starts at ${previousAd.start})`);
+            player.seek(snapBackSeekTime);
+        }
+    }
+
+    function loadSource(url) {
+        console.log('Loading: ' + url);
+
+        let options = {};
+
+        player.load({
+            hls: url,
+            markers,
+            options,
+        }).then(() => {
+            console.log('Source loaded');
+            player.play();
+        });
+    }
+
+    function onStreamEvent(e) {
+        switch (e.type) {
+            case google.ima.dai.api.StreamEvent.Type.CUEPOINTS_CHANGED:
+                const streamData = e.getStreamData();
+                const cuepoints = streamData.cuepoints;
+
+                /** Generating chapter break markers for the scrub bar */
+                for (let ci = 0; ci < cuepoints.length; ci += 1) {
+                    const cuepoint = cuepoints[ci];
+                    markers.push({
+                        time: cuepoint.start,
+                        title: `Chapter ${ci + 1}`,
+                        // duration: cuepoint.end - cuepoint.start,
+                    });
+                }
+                break;
+
+            case google.ima.dai.api.StreamEvent.Type.LOADED:
+                console.log('Stream loaded');
+
+                const manifestUrl = e.getStreamData().url;
+                let options = {};
+                player.setVideoElement(document.getElementById("video"))
+                player.load({
+                    hls: manifestUrl,
+                    markers,
+                    options
+                });
+
+                player.on("ready", (e) => {
+                    console.log('onReady')
+                });
+                player.on("playing", (e) => {
+                    console.log('onPlaying')
+                });
+
+                player.on("seeked", () => {
+                    console.log('onSeeked')
+                    snapBack();
+                });
+                break;
+
+            case google.ima.dai.api.StreamEvent.Type.ERROR:
+                console.error('Error loading stream, playing backup stream.' + e);
+                if (fallbackContent) {
+                    loadSource(fallbackContent);
+                } else {
+                    console.log('Could not get a stream for assetKey');
+                }
+                break;
+
+            case google.ima.dai.api.StreamEvent.Type.STARTED:
+                console.log('Ad started');
+                break;
+
+            case google.ima.dai.api.StreamEvent.Type.AD_BREAK_STARTED:
+                console.log('Ad Break Started, hiding seek bar');
+                adClickElement.classList.add('show');
+                break;
+
+            case google.ima.dai.api.StreamEvent.Type.AD_BREAK_ENDED:
+                console.log('Ad Break Ended, showing seek bar');
+                adClickElement.classList.remove('show');
+                if (allowSnapback) {
+                    snapForward();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+</script>
+</body>
+</html>
