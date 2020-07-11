@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener('DOMContentLoaded', (event) => {
     var player;
 
     var conf = {
@@ -18,4 +18,4 @@ window.onload = function() {
     }, function () {
         console.log('Error while loading source'); // Error!
     });
-}
+});
