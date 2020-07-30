@@ -150,18 +150,18 @@
 
     player.load(source).then(function () {
         console.log('Successfully loaded source'); // Success!
+
+        player.ads.schedule({
+            tag: {
+                url: "https://pubads.g.doubleclick.net/gampad/ads?cmsid=2514119&cust_params=birthYear%3D1921%2526clubfav%3Dbulldogs%2526gen%3Dmale%2526nationalfav%3Daustralia%2526pageType%3Darticle%2526statefav%3Dblues&iu=78756360%2Fnrl.web%2Fnews&output=xml_vast4&vid=26759386&correlator=%5Btimestamp%5D&description_url=%5Bdescription_url%5D&env=vp&gdfp_req=1&hl=en&impl=s&sz=640x480&unviewed_position_start=1&url=%5Breferrer_url%5D",
+                type: 'vast'
+            },
+            id: 'Ad'
+        });
     }, function () {
         console.log('Error while loading source'); // Error!
     });
 
-    player.ads.schedule({
-        tag: {
-            url: "https://pubads.g.doubleclick.net/gampad/ads?cmsid=2514119&cust_params=birthYear%3D1921%2526clubfav%3Dbulldogs%2526gen%3Dmale%2526nationalfav%3Daustralia%2526pageType%3Darticle%2526statefav%3Dblues&iu=78756360%2Fnrl.web%2Fnews&output=xml_vast4&vid=26759386&correlator=%5Btimestamp%5D&description_url=%5Bdescription_url%5D&env=vp&gdfp_req=1&hl=en&impl=s&sz=640x480&unviewed_position_start=1&url=%5Breferrer_url%5D",
-            type: 'vast'
-        },
-        id: 'Ad',
-        position: 'pre'
-    });
 </script>
 </body>
 </html>
