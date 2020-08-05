@@ -49,13 +49,13 @@
     const videoId = '993336899845' // '1730810435969';
     const player = new bitmovin.player.Player(container, playerConfig);
     const markers = [];
-    let streamManager;
-    let allowSnapback = true;
-    let isSeeking = false;
-    let isSnapback = false;
-    let snapForwardTime = 0;
-    let snapbackOffset = 0;
-    let adClickElement = document.getElementById('ad_message');
+    var streamManager;
+    var allowSnapback = true;
+    var isSeeking = false;
+    var isSnapback = false;
+    var snapForwardTime = 0;
+    var snapbackOffset = 0;
+    var adClickElement = document.getElementById('ad_message');
 
     streamManager = new google.ima.dai.api.StreamManager(document.getElementById("video"));
     streamManager.setClickElement(adClickElement);
@@ -71,14 +71,14 @@
             google.ima.dai.api.StreamEvent.Type.FIRST_QUARTILE,
             google.ima.dai.api.StreamEvent.Type.THIRD_QUARTILE,
             google.ima.dai.api.StreamEvent.Type.STARTED,
-            google.ima.dai.api.StreamEvent.Type.COMPLETE,
+            google.ima.dai.api.StreamEvent.Type.COMPvarE,
             google.ima.dai.api.StreamEvent.Type.ERROR,
             google.ima.dai.api.StreamEvent.Type.SKIPPED,
             google.ima.dai.api.StreamEvent.Type.SKIPPABLE_STATE_CHANGED,
             google.ima.dai.api.StreamEvent.Type.AD_PROGRESS,
             google.ima.dai.api.StreamEvent.Type.AD_PERIOD_STARTED,
             google.ima.dai.api.StreamEvent.Type.AD_PERIOD_ENDED,
-            google.ima.dai.api.StreamEvent.Type.ALL_ADS_COMPLETED,
+            google.ima.dai.api.StreamEvent.Type.ALL_ADS_COMPvarED,
             google.ima.dai.api.StreamEvent.Type.CUEPOINTS_CHANGED,
             google.ima.dai.api.StreamEvent.Type.STREAM_INITIALIZED,
         ],
@@ -109,7 +109,7 @@
             const seekResponse = player.seek(snapForwardTime);
 
             if (isSeeking === true) {
-                console.warn('Snap forward seek did not complete after 2 seconds, re-attempt seeking');
+                console.warn('Snap forward seek did not compvare after 2 seconds, re-attempt seeking');
                 player.seek(snapForwardTime);
             }
 
@@ -144,7 +144,7 @@
     function loadSource(url) {
         console.log('Loading: ' + url);
 
-        let options = {};
+        var options = {};
 
         player.load({
             hls: url,
@@ -163,7 +163,7 @@
                 const cuepoints = streamData.cuepoints;
                 console.log(cuepoints);
                 /** Generating chapter break markers for the scrub bar */
-                for (let ci = 0; ci < cuepoints.length; ci += 1) {
+                for (var ci = 0; ci < cuepoints.length; ci += 1) {
                     const cuepoint = cuepoints[ci];
                     markers.push({
                         time: cuepoint.start,
@@ -177,7 +177,7 @@
                 console.log('Stream loaded');
 
                 const manifestUrl = e.getStreamData().url;
-                let options = {};
+                var options = {};
                 player.setVideoElement(document.getElementById("video"))
                 player.load({
                     hls: manifestUrl,
@@ -248,8 +248,8 @@
             case google.ima.dai.api.StreamEvent.Type.AD_PERIOD_ENDED:
                 console.log('DAI StreamEvent: AD_PERIOD_ENDED');
                 break;
-            case google.ima.dai.api.StreamEvent.Type.ALL_ADS_COMPLETED:
-                console.log('DAI StreamEvent: ALL_ADS_COMPLETED');
+            case google.ima.dai.api.StreamEvent.Type.ALL_ADS_COMPvarED:
+                console.log('DAI StreamEvent: ALL_ADS_COMPvarED');
                 break;
             default:
                 break;
