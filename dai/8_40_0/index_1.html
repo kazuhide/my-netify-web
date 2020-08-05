@@ -105,7 +105,7 @@
             snapForwardTime > 0
             && snapForwardTime > streamTime
         ) {
-            console.log(`snapping forward to stream time ${snapForwardTime}`);
+            console.log('snapping forward to stream time ${snapForwardTime}');
             const seekResponse = player.seek(snapForwardTime);
 
             if (isSeeking === true) {
@@ -131,12 +131,12 @@
             isSnapback = true;
 
             if (streamTime > previousAd.end) {
-                console.log(`Setting snap forward time to ${streamTime}`);
+                console.log('Setting snap forward time to ${streamTime}');
                 snapForwardTime = streamTime;
             }
 
             const snapBackSeekTime = previousAd.start - snapbackOffset;
-            console.log(`Seeking back to ${snapBackSeekTime} (ad starts at ${previousAd.start})`);
+            console.log('Seeking back to ${snapBackSeekTime} (ad starts at ${previousAd.start})');
             player.seek(snapBackSeekTime);
         }
     }
@@ -167,7 +167,7 @@
                     const cuepoint = cuepoints[ci];
                     markers.push({
                         time: cuepoint.start,
-                        title: `Chapter ${ci + 1}`,
+                        title: 'Chapter ${ci + 1}',
                         // duration: cuepoint.end - cuepoint.start,
                     });
                 }
