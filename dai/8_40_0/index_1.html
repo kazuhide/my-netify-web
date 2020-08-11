@@ -85,7 +85,7 @@
         onStreamEvent,
         false);
 
-    player.on(bitmovin.player.PlayerEvent.Metadata, function(data) {
+    player.on("metadata", function(data) {
         if (streamManager && data && data.metadataType === 'ID3') {
             console.log('metadata', data.metadata);
             streamManager.onTimedMetadata(data.metadata);
