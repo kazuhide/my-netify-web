@@ -143,13 +143,9 @@
 
     function loadSource(url) {
         console.log('Loading: ' + url);
-
-        var options = {};
-
         player.load({
             hls: url,
-            markers,
-            options,
+            markers
         }).then(() => {
             console.log('Source loaded');
             player.play();
