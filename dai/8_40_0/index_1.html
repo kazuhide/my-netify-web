@@ -144,22 +144,12 @@
     function loadSource(url) {
         console.log('Loading: ' + url);
 
-        if (markers.length != 0) {
-            player.load({
-                hls: url,
-                markers
-            }).then(function() {
-                console.log('Source loaded');
-                player.play();
-            });
-        } else {
-            player.load({
-                hls: url
-            }).then(function() {
-                console.log('Source loaded');
-                player.play();
-            });
-        }
+        player.load({
+            hls: url
+        }).then(function() {
+            console.log('Source loaded');
+            player.play();
+        });
     }
 
     function onStreamEvent(e) {
