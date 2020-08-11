@@ -176,9 +176,7 @@
                 var options = {};
                 player.setVideoElement(document.getElementById("video"))
                 player.load({
-                    hls: manifestUrl,
-                    markers,
-                    options
+                    hls: manifestUrl
                 });
 
                 player.on("ready", function(e) {
