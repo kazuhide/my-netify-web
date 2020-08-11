@@ -46,7 +46,7 @@
         }
     }
     const cmsId = '2488267';
-    const videoId = '993336899845' // '1730810435969';
+    const videoId = '993336899845'; // '1730810435969';
     const player = new bitmovin.player.Player(container, playerConfig);
     const markers = [];
     var streamManager;
@@ -143,13 +143,23 @@
 
     function loadSource(url) {
         console.log('Loading: ' + url);
-        player.load({
-            hls: url,
-            markers
-        }).then(function() {
-            console.log('Source loaded');
-            player.play();
-        });
+
+        if (markers.length != 0) {
+            player.load({
+                hls: url,
+                markers
+            }).then(function() {
+                console.log('Source loaded');
+                player.play();
+            });
+        } else {
+            player.load({
+                hls: url
+            }).then(function() {
+                console.log('Source loaded');
+                player.play();
+            });
+        }
     }
 
     function onStreamEvent(e) {
