@@ -18,6 +18,22 @@
                 <key>ContentURL</key>
                 <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
         </dict>
+        <dict>
+                <key>TestCaseName</key>
+                <string>NHK World Live</string>
+                <key>AdServer</key>
+                <string>auditude.com</string>
+                <key>MediaID</key>
+                <string>noidaPT_asset_15Seconds_2Slots_RequestId4</string>
+                <key>ZoneID</key>
+                <string>269113</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : auditude.com,noidaPT_asset_15Seconds_2Slots_RequestId4,269113</string>
+                <key>ContentURL</key>
+                <string>https://nhkworld.webcdn.stream.ne.jp/www11/nhkworld-tv/sycc-live/all/playlist.m3u8</string>
+        </dict>
 		<dict>
                  <key>TestCaseName</key>
                 <string>different ads in pre,mid,post</string>
