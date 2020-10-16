@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+<dict>
+                 <key>TestCaseName</key>
+                <string>same ad m3u8 in pre,mid,post</string>
+                <key>AdServer</key>
+                <string>auditude.com</string>
+                <key>MediaID</key>
+                <string>noidaPT_asset_15Seconds_2Slots_RequestId4</string>
+                <key>ZoneID</key>
+                <string>269113</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : auditude.com,noidaPT_asset_15Seconds_2Slots_RequestId4,269113</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		<dict>
+                 <key>TestCaseName</key>
+                <string>different ads in pre,mid,post</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_ 000108</string>
+                <key>ZoneID</key>
+                <string>121758</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_ 000108,121758</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+			<dict>
+                 <key>TestCaseName</key>
+                <string>Same ad in pre,mid,post VAST2</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_ 000108</string>
+                <key>ZoneID</key>
+                <string>121800</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_ 000108,121800</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		<dict>
+                 <key>TestCaseName</key>
+                <string>Different ads in pre,mid,post VAST2</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_ 000108</string>
+                <key>ZoneID</key>
+                <string>121801</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_ 000108,121801</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+			<dict>
+                 <key>TestCaseName</key>
+                <string>VAST2:Multilots</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_000109</string>
+                <key>ZoneID</key>
+                <string>121802</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_000109,121802</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		
+		<dict>
+                 <key>TestCaseName</key>
+                <string>Same ads in pre,mid,post VAST3</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_ 000108</string>
+                <key>ZoneID</key>
+                <string>121818</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_ 000108,121818</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+<dict>
+                 <key>TestCaseName</key>
+                <string>Diff ads in pre,mid,post VAST3</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_ 000108</string>
+                <key>ZoneID</key>
+                <string>121819</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_ 000108,121819</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		
+				<dict>
+                 <key>TestCaseName</key>
+                <string>VAST3:Multilots</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_000109</string>
+                <key>ZoneID</key>
+                <string>122053</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_000109,122053</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		
+		<dict>
+                 <key>TestCaseName</key>
+                <string>Multiple VAST redirects</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_ 000108</string>
+                <key>ZoneID</key>
+                <string>121826</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_ 000108,121826</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		
+				<dict>
+                 <key>TestCaseName</key>
+                <string>VMAP -> multiple m3u8</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_000109</string>
+                <key>ZoneID</key>
+                <string>122051</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_000109,122051</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		
+		<dict>
+                 <key>TestCaseName</key>
+                <string>VMAP->VAST2->m3u8</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_000109</string>
+                <key>ZoneID</key>
+                <string>121835</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_000109,121835</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+	<dict>
+                 <key>TestCaseName</key>
+                <string>VMAP->VAST3->VAST2->m3u8</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_000109</string>
+                <key>ZoneID</key>
+                <string>122055</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_000109,122055</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		
+			<dict>
+                 <key>TestCaseName</key>
+                <string>VAST2 midroll multilots</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_000109</string>
+                <key>ZoneID</key>
+                <string>121777</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_000109,121777</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+			<dict>
+                 <key>TestCaseName</key>
+                <string>VAST3 midroll multilots</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_ 000108</string>
+                <key>ZoneID</key>
+                <string>121806</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_ 000108,121806</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+			<dict>
+                 <key>TestCaseName</key>
+                <string>multiple VAST-> multiple m3u8</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_000109</string>
+                <key>ZoneID</key>
+                <string>121827</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_000109,121827</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		
+			<dict>
+                 <key>TestCaseName</key>
+                <string>VMAP-> multiple m3u8</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_000109</string>
+                <key>ZoneID</key>
+                <string>122051</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_000109,122051</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+
+	<dict>
+                 <key>TestCaseName</key>
+                <string>VPAID</string>
+                <key>AdServer</key>
+                <string>qa3.auditude.com</string>
+                <key>MediaID</key>
+                <string>psdk_000109</string>
+                <key>ZoneID</key>
+                <string>122914</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : qa3.auditude.com,psdk_000109,122914</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		
+	<dict>
+                 <key>TestCaseName</key>
+                <string>CRS</string>
+                <key>AdServer</key>
+                <string>auditude.com</string>
+                <key>MediaID</key>
+                <string>noidaPT_ankita_ku_1</string>
+                <key>ZoneID</key>
+                <string>269183</string>
+                <key>TestCaseExplanation</key>
+                <string>Content URL :  http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+                <key>TestCaseExplanation2</key>
+                <string>Ad Variables : auditude.com,psdk_000109,121849</string>
+                <key>ContentURL</key>
+                <string>http://www.ptdemos.com/playlists/hai/bipbop.m3u8</string>
+        </dict>
+		
+	
+	
+</array>
+</plist>
